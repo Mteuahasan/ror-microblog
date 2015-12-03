@@ -1,6 +1,8 @@
 # ror-microblog
 *Temporary codename*
 
+![circleci](https://circleci.com/gh/Mteuahasan/ror-microblog.svg?style=shield&circle-token=1af1aff1bff43a4498d5847795c6c0d648544772)
+
 `Ruby version: 2.2.3`
 
 ## Styleguides
