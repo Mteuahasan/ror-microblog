@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "dist/main.js",
   "devDependencies": {
-    "aurelia-bundler": "^0.1.8",
+    "aurelia-bundler": "^0.1.9",
     "aurelia-cli": "^0.3.1",
     "aurelia-tools": "^0.1.3",
     "babel": "^5.8.23",
@@ -14,7 +14,7 @@
     "browser-sync": "^1.8.1",
     "conventional-changelog": "0.0.11",
     "del": "^1.1.0",
-    "gulp": "^3.8.10",
+    "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
     "gulp-bump": "^0.3.1",
     "gulp-changed": "^1.1.0",
