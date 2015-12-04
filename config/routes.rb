@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "moodlr#index"
 
-  resources :users
+  scope(:path => '/api') do
+    resources :users
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
