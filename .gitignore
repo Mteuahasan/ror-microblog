@@ -56,5 +56,4 @@ Temporary Items
 
 # Public
 public/jspm_packages/github/**/*
-public/jspm_packages/npm/**/*
 public/node_modules/**/*

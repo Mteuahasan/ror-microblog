@@ -8,7 +8,6 @@ var bundleCfg = {
         'aurelia-bootstrapper',
         'aurelia-fetch-client',
         'aurelia-router',
-        'npm:babel-core@5.8.34',
         'npm:aurelia-templating-binding',
         'npm:aurelia-templating-resources',
         'npm:aurelia-templating-router',
