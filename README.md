@@ -5,6 +5,21 @@
 
 `Ruby version: 2.2.3`
 
+## Usage
+
+*Requires node/npm, gulp and jspm*
+```sh
+  $ npm i -g jspm gulp
+```
+
+```sh
+  $ bundle install
+  $ cd public/
+  $ npm install
+  $ jspm install -y
+```
+*JSPM might reach GitHub limits, it will ask to setup GitHub username and password/token. I'd recommend using the token.*
+
 ## Styleguides
 
 ### Git Commit Messages (from [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md))

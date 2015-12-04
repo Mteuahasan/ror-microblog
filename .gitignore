@@ -53,3 +53,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Public
+public/jspm_packages
+public/node_modules
