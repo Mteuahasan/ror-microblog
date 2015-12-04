@@ -55,5 +55,4 @@ Temporary Items
 .apdisk
 
 # Public
-public/jspm_packages/github/**/*
 public/node_modules/**/*
