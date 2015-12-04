@@ -9,7 +9,7 @@
 
 *Requires node/npm, gulp and jspm*
 ```sh
-  $ npm i -g jspm gulp
+  $ npm i -g jspm
 ```
 
 ```sh
@@ -19,6 +19,15 @@
   $ jspm install -y
 ```
 *JSPM might reach GitHub limits, it will ask to setup GitHub username and password/token. I'd recommend using the token.*
+
+*Aurelia stuff.*
+```sh
+  $ npm i -g aurelia-cli
+  $ cd public/
+  $ aurelia bundle
+  $ aurelia unbundle
+```
+
 
 ## Styleguides
 
