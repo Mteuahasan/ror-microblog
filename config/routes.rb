@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root "moodlr#index"
 
-  scope(:path => '/api') do
-    resources :users
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index, :create, :show, :update, :destroy]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
