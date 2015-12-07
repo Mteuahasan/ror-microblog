@@ -5,7 +5,7 @@ class UsersControllerTest < ActionController::TestCase
     @controller = Api::V1::UsersController.new
   end
 
-  test "should route to create user" do
+  test "should exists a route to create user" do
     assert_routing({ method: 'post', path: '/api/v1/users' }, { controller: "api/v1/users", action: "create" })
   end
 
