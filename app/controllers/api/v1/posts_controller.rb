@@ -24,6 +24,8 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def repost
+    authenticate_request!
+    user_id = @current_user.id
     render plain: params[:id]
   end
 
