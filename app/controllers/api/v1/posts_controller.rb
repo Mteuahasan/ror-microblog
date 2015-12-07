@@ -23,6 +23,10 @@ class Api::V1::PostsController < Api::V1::BaseController
     end
   end
 
+  def repost
+    render plain: params[:id]
+  end
+
   private
 
   def post_params

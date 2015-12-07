@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post 'users/authenticate' => 'users#authenticate'
 
       resources :posts, only: [:index, :create, :show, :update, :destroy]
+      post "posts/:id/repost" => "posts#repost", as: 'posts_repost'
     end
   end
 
