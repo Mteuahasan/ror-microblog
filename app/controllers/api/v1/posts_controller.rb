@@ -5,6 +5,7 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def create
+    authenticate_request!
     @post = Post.new(post_params)
     if @post.save
       render :nothing => true, :status => :created
