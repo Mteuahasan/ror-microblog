@@ -1,0 +1,16 @@
+<template>
+  <ul>
+    <li repeat.for="row of router.navigation | authFilter: isAuthenticated" class="${row.isActive ? 'active' : ''}">
+      <a href.bind="row.href">${row.title}</a>
+    </li>
+  </ul>
+
+  <ul if.bind="!isAuthenticated">
+    <li><a href="/#/login">Login</a></li>
+    <li><a href="/#/signup">Signup</a></li>
+  </ul>
+
+  <ul if.bind="isAuthenticated">
+    <li><a href="/#/logout">Logout</a></li>
+  </ul>
+</template>
