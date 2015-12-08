@@ -30,6 +30,11 @@ class Api::V1::UsersController < Api::V1::BaseController
     end
   end
 
+  def me
+    authenticate_request!
+    render(json: Api::V1::UserSerializer.new(@current_user).to_json)
+  end
+
   private
 
   def user_params

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :create, :show, :update, :destroy]
       post 'users/authenticate' => 'users#authenticate'
+      get 'users/me' => 'users#me'
 
       resources :posts, only: [:index, :create, :show, :update, :destroy]
       post "posts/:id/repost" => "posts#repost", as: 'posts_repost'

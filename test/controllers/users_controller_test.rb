@@ -43,6 +43,20 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should return logged user" do
+    authenticate
+    body = JSON.parse response.body
+    request.headers["Authorization"] = body["auth_token"]
+
+    get :me
+    body = JSON.parse response.body
+
+    assert_equal "Mteuahasan", body["user"]["pseudo"]
+    assert_equal "hello@matthieulachassagne.com", body["user"]["email"]
+    assert_nil body["user"]["password"]
+    assert_response :success
+  end
+
   private
 
   def create_user
