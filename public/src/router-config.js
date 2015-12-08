@@ -16,8 +16,19 @@ export default class {
       config.addPipelineStep('authorize', AuthorizeStep)
 
       config.map([
-        {route: ['','welcome'], name: 'welcome', moduleId: tmpl('welcome'), nav: true, title:'Welcome'},
-        {route: 'signup', name: 'signup', moduleId: tmpl('signup'), nav: false, title:'Signup', authRoute: true},
+        {
+          route: ['','welcome'], name: 'welcome',
+          moduleId: tmpl('welcome'), nav: true, title:'Welcome'
+        }, {
+          route: 'signup', name: 'signup',
+          moduleId: tmpl('signup'), nav: false, title:'Signup', authRoute: true
+        }, {
+          route: 'login', name: 'login',
+          moduleId: tmpl('login'), nav: false, title:'Login', authRoute: true
+        }, {
+          route: 'logout', name: 'logout',
+          moduleId: tmpl('logout'), nav: false, title:'Logout', authRoute: true
+        }
       ])
     }
 
