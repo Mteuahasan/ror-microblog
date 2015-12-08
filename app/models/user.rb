@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   has_many :posts
   before_save :hash_password, :if=>:password_changed?
 
-  def self.find_by_credentials(pseudo, password)
-    if user = User.find_by(pseudo: pseudo)
+  def self.find_by_credentials(identifier, password)
+    if user = User.find_by(pseudo: identifier) || user = User.find_by(email: identifier)
       if BCrypt::Password.new(user.password).is_password? password
         return user
       end

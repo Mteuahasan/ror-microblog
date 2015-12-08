@@ -25,8 +25,17 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
-  test "should provide authentication token" do
+  test "should provide authentication token with email" do
     authenticate
+    body = JSON.parse response.body
+    assert_not_empty body["auth_token"]
+    assert_equal body["auth_token"].length, 132
+    assert_equal "Mteuahasan", body["user"]["pseudo"]
+    assert_response :success
+  end
+
+  test "should provide authentication token with pseudo" do
+    authenticate email: "Mteuahasan"
     body = JSON.parse response.body
     assert_not_empty body["auth_token"]
     assert_equal body["auth_token"].length, 132
@@ -40,8 +49,8 @@ class UsersControllerTest < ActionController::TestCase
     post :create, user: {pseudo: "Mteuahasan", first_name: "Matthieu", last_name:"Lachassagne", email: "hello@matthieulachassagne.com", password: "password1"}
   end
 
-  def authenticate(username: "Mteuahasan", password: "password1")
+  def authenticate(email: "hello@matthieulachassagne.com", password: "password1")
     create_user
-    post :authenticate, {pseudo: username, password: password}
+    post :authenticate, {email: email, password: password}
   end
 end

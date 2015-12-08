@@ -23,8 +23,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def authenticate
-    user = User.find_by_credentials(params[:pseudo], params[:password])
-    if user
+    if user = User.find_by_credentials(params[:email], params[:password])
       render json: authentication_payload(user)
     else
       render json: { errors: ['Invalid username or password'] }, status: :unauthorized
