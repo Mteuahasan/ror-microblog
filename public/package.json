@@ -5,6 +5,10 @@
   "homepage": "http://aurelia.io",
   "license": "MIT",
   "main": "dist/main.js",
+  "scripts": {
+    "unbundle": "rm ./src/dist/app-bundle.*; aurelia unbundle",
+    "bundle": "aurelia bundle"
+  },
   "devDependencies": {
     "aurelia-bundler": "^0.1.9",
     "aurelia-cli": "^0.3.1",
@@ -58,6 +62,7 @@
       "bootstrap": "github:twbs/bootstrap@^3.3.5",
       "fetch": "github:github/fetch@^0.10.1",
       "font-awesome": "npm:font-awesome@^4.4.0",
+      "scottdorman/bootstrap-flat": "github:scottdorman/bootstrap-flat@^3.3.4",
       "text": "github:systemjs/plugin-text@^0.0.3"
     },
     "devDependencies": {

@@ -219,5 +219,9 @@
   "github:aurelia/metadata@0.7.3": {
     "core-js": "npm:core-js@^0.9.5"
   },
-  "github:aurelia/path@0.8.1": {}
+  "github:aurelia/path@0.8.1": {},
+  "npm:bootflat@2.0.4": {
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "github:scottdorman/bootstrap-flat@3.3.4": {}
 }

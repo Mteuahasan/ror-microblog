@@ -8,11 +8,12 @@ var bundleCfg = {
         'aurelia-bootstrapper',
         'aurelia-fetch-client',
         'aurelia-router',
-        'npm:aurelia-templating-binding',
-        'npm:aurelia-templating-resources',
-        'npm:aurelia-templating-router',
-        'npm:aurelia-loader-default',
-        'npm:aurelia-history-browser'
+        'aurelia-templating-binding',
+        'aurelia-templating-resources',
+        'aurelia-templating-router',
+        'aurelia-loader-default',
+        'aurelia-history-browser',
+        'aurelia-auth'
       ],
       options: {
         inject: true,

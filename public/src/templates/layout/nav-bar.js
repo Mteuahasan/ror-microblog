@@ -5,14 +5,23 @@ import {AuthService} from 'aurelia-auth'
 @inject(AuthService)
 
 export class NavBar {
-  _isAuthenticated = false
   @bindable router = null
+
+  username = ''
 
   constructor(auth) {
     this.auth = auth
+    this.getUsername()
   }
 
   get isAuthenticated() {
     return this.auth.isAuthenticated()
+  }
+
+  getUsername() {
+    this.auth.getMe()
+    .then(response =>
+      this.username = response.user.pseudo
+    )
   }
 }

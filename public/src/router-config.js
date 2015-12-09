@@ -17,8 +17,8 @@ export default class {
 
       config.map([
         {
-          route: ['','welcome'], name: 'welcome',
-          moduleId: tmpl('welcome'), nav: true, title:'Welcome'
+          route: ['','home'], name: 'home',
+          moduleId: tmpl('home'), nav: true, title:'Moodler'
         }, {
           route: 'signup', name: 'signup',
           moduleId: tmpl('signup'), nav: false, title:'Signup', authRoute: true

@@ -29,10 +29,12 @@ System.config({
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0-beta.1.0.2",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
+    "bootflat": "npm:bootflat@2.0.4",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "core-js": "npm:core-js@1.2.6",
     "fetch": "github:github/fetch@0.10.1",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "scottdorman/bootstrap-flat": "github:scottdorman/bootstrap-flat@3.3.4",
     "text": "github:systemjs/plugin-text@0.0.3",
     "github:aurelia/dependency-injection@0.9.2": {
       "aurelia-logging": "github:aurelia/logging@0.6.4",
@@ -213,6 +215,9 @@ System.config({
       "core-js": "npm:core-js@1.2.6"
     },
     "npm:babel-runtime@5.8.34": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:bootflat@2.0.4": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:core-js@0.9.18": {
