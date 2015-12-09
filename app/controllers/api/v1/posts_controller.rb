@@ -6,7 +6,9 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   def create
     authenticate_request!
-    @post = Post.new(post_params)
+    params = post_params
+    params["user_id"] = @current_user.id
+    @post = Post.new(params)
     if @post.save
       render :nothing => true, :status => :created
     else
@@ -32,6 +34,6 @@ class Api::V1::PostsController < Api::V1::BaseController
   private
 
   def post_params
-    params.require(:post).permit(:content, :user_id, :image_url)
+    params.require(:post).permit(:content, :image_url, :mood_id)
   end
 end

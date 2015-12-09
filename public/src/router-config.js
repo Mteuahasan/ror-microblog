@@ -28,6 +28,9 @@ export default class {
         }, {
           route: 'logout', name: 'logout',
           moduleId: tmpl('logout'), nav: false, title:'Logout', authRoute: true
+        }, {
+          route: 'account', name: 'account',
+          moduleId: tmpl('account'), nav: false, title:'Account', authRoute: true
         }
       ])
     }

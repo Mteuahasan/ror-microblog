@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
       post "posts/:id/repost" => "posts#repost", as: 'posts_repost'
       resources :posts, only: [:index, :create, :show, :update, :destroy]
+
+      resources :moods, only: [:index, :create, :show, :update, :destroy]
     end
   end
 
