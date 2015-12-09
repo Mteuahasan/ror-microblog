@@ -7,8 +7,8 @@ export class Signup {
   heading = 'Sign Up'
 
   user = {
-    pseudo: 'Cohars',
-    password: `pcw`
+    pseudo: '',
+    password: ''
   }
 
   loginError = ''
@@ -26,5 +26,4 @@ export class Signup {
       this.loginError = error.response
     })
   }
-
 }

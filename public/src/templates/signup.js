@@ -8,11 +8,11 @@ export class Signup {
   heading = 'Sign Up'
 
   user = {
-    pseudo: 'Cohars' + rand(),
-    email: `hugo${rand()}@mail.com`,
-    first_name: 'Hugo',
-    last_name: 'c',
-    password: 'pcw'
+    pseudo: '',
+    email: ``,
+    first_name: '',
+    last_name: '',
+    password: ''
   }
 
   signupError = ''
