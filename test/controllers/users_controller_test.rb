@@ -59,7 +59,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should return unauthorized" do
     get :me
     body = JSON.parse response.body
-    assert_equal {"errors"=>["Not Authenticated"]}, body
+    assert_equal ["Not Authenticated"], body["errors"]
     assert_response :unauthorized
   end
 
