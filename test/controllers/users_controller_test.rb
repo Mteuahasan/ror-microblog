@@ -38,7 +38,6 @@ class UsersControllerTest < ActionController::TestCase
     authenticate email: "Mteuahasan"
     body = JSON.parse response.body
     assert_not_empty body["auth_token"]
-    assert_equal body["auth_token"].length, 132
     assert_equal "Mteuahasan", body["user"]["pseudo"]
     assert_response :success
   end
@@ -55,6 +54,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal "hello@matthieulachassagne.com", body["user"]["email"]
     assert_nil body["user"]["password"]
     assert_response :success
+  end
+
+  test "should return unauthorized" do
+    get :me
+    body = JSON.parse response.body
+    assert_equal {"errors"=>["Not Authenticated"]}, body
+    assert_response :unauthorized
   end
 
   private
