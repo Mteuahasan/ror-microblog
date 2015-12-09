@@ -11,13 +11,23 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create an user" do
     create_user
-    assert_response :success
+    assert_response :created
   end
 
   test "should not create duplicate user" do
     create_user
     create_user
     assert_response :bad_request
+  end
+
+  test "should show user" do
+    create_user
+    body = JSON.parse response.body
+
+    get :show, id: body["id"]
+    body = JSON.parse response.body
+
+    assert_response :success
   end
 
   test "should not provide authentication token" do
@@ -49,7 +59,6 @@ class UsersControllerTest < ActionController::TestCase
 
     get :me
     body = JSON.parse response.body
-
     assert_equal "Mteuahasan", body["user"]["pseudo"]
     assert_equal "hello@matthieulachassagne.com", body["user"]["email"]
     assert_nil body["user"]["password"]
