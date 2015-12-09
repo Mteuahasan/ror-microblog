@@ -1,7 +1,17 @@
 <template>
   <section>
-    <div class="well">
-      <h4>${heading}</h4>
+    <div class="row">
+      <div class="well col-md-3">
+        <h4>${heading}</h4>
+      </div>
+      <div class="well col-md-9">
+        <form role="form" submit.delegate="submitPost()">
+          <div class="form-group">
+            <textarea value.bind="content" class="form-control" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Post</button>
+        </form>
+      </div>
     </div>
 
   </section>
