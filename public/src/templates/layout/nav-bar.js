@@ -11,7 +11,7 @@ export class NavBar {
 
   constructor(auth) {
     this.auth = auth
-    this.getUsername()
+    if (this.isAuthenticated) this.getUsername()
   }
 
   get isAuthenticated() {
@@ -23,5 +23,6 @@ export class NavBar {
     .then(response =>
       this.username = response.user.pseudo
     )
+    .catch(() => {})
   }
 }
