@@ -13,7 +13,6 @@ export class Users {
     http.configure(config => {
       config.withBaseUrl('/api/v1')
     })
-    console.log(http)
     this.http = http
   }
 
