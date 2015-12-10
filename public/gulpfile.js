@@ -1,9 +1,12 @@
-var cli = require('aurelia-cli');
+var gulp = require('gulp')
+var bundler = require('aurelia-bundler')
 
-var bundleCfg = {
-  js: {
+var config = {
+  force: true,
+  packagePath: '.',
+  bundles: {
     "src/dist/app-bundle": {
-      modules: [
+      includes: [
         '*',
         'aurelia-bootstrapper',
         'aurelia-fetch-client',
@@ -21,7 +24,12 @@ var bundleCfg = {
       }
     }
   }
-};
+}
 
-cli.command('bundle', bundleCfg);
-cli.command('unbundle', bundleCfg);
+gulp.task('bundle', function() {
+ return bundler.bundle(config)
+})
+
+gulp.task('unbundle', function() {
+ return bundler.unbundle(config)
+})

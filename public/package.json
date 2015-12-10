@@ -6,8 +6,8 @@
   "license": "MIT",
   "main": "dist/main.js",
   "scripts": {
-    "unbundle": "rm ./src/dist/app-bundle.*; aurelia unbundle",
-    "bundle": "aurelia bundle"
+    "unbundle": "rm ./src/dist/app-bundle.*; gulp unbundle",
+    "bundle": "gulp bundle"
   },
   "devDependencies": {
     "aurelia-bundler": "^0.1.9",
