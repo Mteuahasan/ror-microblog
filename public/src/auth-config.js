@@ -1,5 +1,5 @@
 var config = {
-  baseUrl: 'http://localhost:3000',
+  baseUrl: window.location.origin,
   signupUrl: '/api/v1/users',
   loginUrl: '/api/v1/users/authenticate',
   profileUrl: '/api/v1/users/me',
