@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 # Use pg as the database for Active Record
 gem 'pg'
+# Use rspec
+gem 'rspec'
 # Use AMS
 gem 'active_model_serializers'
 # Use JWT for user authentication
