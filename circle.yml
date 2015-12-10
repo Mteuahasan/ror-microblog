@@ -4,6 +4,8 @@ deployment:
     commands:
       - git push git@heroku.com:moodlr.git
       - heroku run bundle exec rake db:migrate --app moodlr
+    heroku:
+      appname: moodlr
 machine:
   ruby:
     version: 2.2.3
