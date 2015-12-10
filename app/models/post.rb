@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  has_one :mood
+  belongs_to :mood
   belongs_to :user
-  validates :mood_id, presence: true
+  validates :mood, presence: true
 end
