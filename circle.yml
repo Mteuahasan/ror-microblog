@@ -3,6 +3,8 @@ deployment:
     branch: master
     heroku:
       appname: moodlr
+    commands:
+      - heroku run bundle exec rake db:migrate --app moodlr
 machine:
   ruby:
     version: 2.2.3
