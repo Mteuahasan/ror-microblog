@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   validates :password, presence: true
 
   has_many :posts
+  has_many :followers, class_name: "User", foreign_key: "followed_id"
+  belongs_to :followed, class_name: "User"
+
   before_save :hash_password, :if=>:password_changed?
 
   def self.find_by_credentials(identifier, password)
