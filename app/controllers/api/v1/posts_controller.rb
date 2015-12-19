@@ -1,4 +1,13 @@
 class Api::V1::PostsController < Api::V1::BaseController
+  def index
+    authenticate_request!
+    posts = Post.where(user: @current_user.following).order('created_at DESC')
+    posts = posts.map { |post|
+      Api::V1::PostSerializer.new(post)
+    }
+    render(json: posts.to_json)
+  end
+
   def show
     post = Post.find(params[:id])
     render(json: Api::V1::PostSerializer.new(post).to_json)
