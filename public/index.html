@@ -7,6 +7,26 @@
   </head>
 
   <body aurelia-app="moodlr-app">
+    <img src="./images/mood/cool.svg" data-index="0" id="loader">
+    <script>
+      var $loader = document.getElementById('loader')
+
+      var moods = ['cool', 'excited', 'funny', 'happy', 'love', 'nervous', 'pirat', 'sad', 'shocked', 'tired']
+      // SIMPLE LOADER
+      var i
+      function runLoader() {
+        console.log("loading")
+        i = $loader.getAttribute('data-index') + 1
+        if (i = moods.length) i = 0
+        $loader.setAttribute('data-index', i)
+        console.log(i)
+        $loader.setAttribute('src', `./images/mood/${moods[i]}.svg`)
+        if (document.getElementById('loader')) {
+          setTimeout(runLoader, 100)
+        }
+      }
+      runLoader()
+    </script>
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <script>
