@@ -223,5 +223,8 @@
   "npm:bootflat@2.0.4": {
     "process": "github:jspm/nodelibs-process@^0.1.0"
   },
-  "github:scottdorman/bootstrap-flat@3.3.4": {}
+  "github:scottdorman/bootstrap-flat@3.3.4": {},
+  "npm:moment@2.10.6": {
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  }
 }

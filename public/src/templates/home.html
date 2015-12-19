@@ -8,6 +8,7 @@
         <form role="form" submit.delegate="submitPost()">
           <div class="form-group">
             <textarea value.bind="content" class="form-control" rows="3"></textarea>
+            <div>${content.length}/280</div>
           </div>
           <button type="submit" class="btn btn-default">Post</button>
         </form>

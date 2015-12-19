@@ -3,7 +3,6 @@ System.config({
   transpiler: "babel",
   babelOptions: {
     "optional": [
-      "runtime",
       "optimisation.modules.system",
       "es7.decorators",
       "es7.classProperties"
@@ -36,6 +35,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "fetch": "github:github/fetch@0.10.1",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "moment": "npm:moment@2.10.6",
     "scottdorman/bootstrap-flat": "github:scottdorman/bootstrap-flat@3.3.4",
     "text": "github:systemjs/plugin-text@0.0.3",
     "github:aurelia/dependency-injection@0.9.2": {
@@ -238,6 +238,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:moment@2.10.6": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"

@@ -1,23 +1,35 @@
-import {inject} from 'aurelia-framework'
+import {inject, ObserverLocator} from 'aurelia-framework'
 import {HttpClient, json} from 'aurelia-fetch-client'
-import {AuthService} from 'aurelia-auth'
 
 import 'fetch'
 
-@inject(HttpClient)
+@inject(HttpClient, ObserverLocator)
 export class Users {
   heading = 'Welcome'
   content = ''
 
-  constructor(http) {
+  constructor(http, observerLocator) {
     http.configure(config => {
       config.withBaseUrl('/api/v1')
     })
     this.http = http
+
+    let subscription = observerLocator
+      .getObserver(this, 'content')
+      .subscribe(() => {
+        this.contentUpdate()
+      })
   }
 
   activate() {
 
+  }
+
+  contentUpdate() {
+    let l = this.content.length
+    if (l > 280) {
+      this.content = this.content.slice(0, 280-l)
+    }
   }
 
   submitPost() {
@@ -30,6 +42,7 @@ export class Users {
       })
     })
     .then(response => {
+      console.log(response)
       this.content = ''
     })
   }

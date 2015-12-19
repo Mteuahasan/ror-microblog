@@ -18,7 +18,7 @@ export default class {
       config.map([
         {
           route: ['','home'], name: 'home',
-          moduleId: tmpl('home'), nav: true, title:'Moodler'
+          moduleId: tmpl('home'), nav: true, title:'Moodler', auth: true
         }, {
           route: 'signup', name: 'signup',
           moduleId: tmpl('signup'), nav: false, title:'Signup', authRoute: true
@@ -30,7 +30,7 @@ export default class {
           moduleId: tmpl('logout'), nav: false, title:'Logout', authRoute: true
         }, {
           route: 'account', name: 'account',
-          moduleId: tmpl('account'), nav: false, title:'Account', authRoute: true
+          moduleId: tmpl('account'), nav: false, title:'Account', auth: true
         }
       ])
     }
