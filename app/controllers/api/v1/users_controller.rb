@@ -72,12 +72,10 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def update
     user = User.find_by(id: params[:id])
-    user.update(user_params_update)
-    if user.save
-      render :json => user.to_json, :status => :ok
-    else
-      render :json => { :errors => @user.errors.messages }, :status => :bad_request
-    end
+    user_params.each { |k, v|
+      user.update_column(k, v)
+    }
+    render :nothing => true, :status => :no_content
   end
 
   def authenticate
@@ -98,11 +96,6 @@ class Api::V1::UsersController < Api::V1::BaseController
   def user_params
     params.require(:user).permit(:pseudo, :first_name, :last_name, :email, :password,:description, :img_url)
   end
-
-  def user_params_update
-    params.require(:user).permit(:first_name, :last_name, :description, :img_url)
-  end
-
 
   def authentication_payload(user)
     return nil unless user && user.id
