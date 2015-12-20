@@ -49,6 +49,7 @@
   }
 
   h3 {
+    color: $blue;
     margin-top: 0;
   }
 
@@ -63,7 +64,6 @@
   .mood {
     h3 {
       text-transform: uppercase;
-      color: $blue;
     }
 
     img {

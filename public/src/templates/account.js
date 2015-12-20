@@ -30,10 +30,17 @@ export class Account {
         } else {
           this.isMe = false
           this.http.fetch(`/users/${params.pseudo}`,)
-            .then(response => response.json())
+            .then(response => {
+              if (response.status === 200) {
+                console.log(response.status)
+                return response.json()
+              }
+            })
             .then(data => {
-              this.user = data.user
-              this.getUserPosts()
+              if (data && data.user) {
+                this.user = data.user
+                this.getUserPosts()
+              }
             })
         }
       })

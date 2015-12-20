@@ -68,14 +68,14 @@ textarea {
     background-color: #f7f7f7;
     border-top: solid 1px #d1d1d1; }
   .single-post h3 {
+    color: #4a90e2;
     margin-top: 0; }
   .single-post h3, .single-post h4 {
     font-weight: 300; }
   .single-post .content {
     padding: 20px 40px; }
   .single-post .mood h3 {
-    text-transform: uppercase;
-    color: #4a90e2; }
+    text-transform: uppercase; }
   .single-post .mood img {
     width: 60px;
     height: 60px; }

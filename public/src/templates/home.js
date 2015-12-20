@@ -37,6 +37,21 @@ export class Home {
       .then(data => {
         this.moods = data.map(mood => mood.mood)
       })
+
+    this.http.fetch('/posts')
+      .then(response => {
+        if (response.status === 200) {
+          console.log(response.status)
+          return response.json()
+        }
+      })
+      .then(data => {
+        console.log(data)
+        if (data && data.user) {
+          this.user = data.user
+          this.getUserPosts()
+        }
+      })
   }
 
   contentUpdate() {

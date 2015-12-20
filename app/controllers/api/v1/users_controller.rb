@@ -17,6 +17,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     posts = posts.map { |post|
       Api::V1::PostSerializer.new(post)
     }
+    posts.sort! { |a, b| b.created_at <=> a.created_at }
     render(json: posts.to_json)
   end
 
