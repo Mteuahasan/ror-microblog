@@ -38,6 +38,30 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: User.following?(@current_user.id, user2)
   end
 
+  def follow
+    authenticate_request!
+    puts !User.following?(@current_user.id, params[:id])
+    if !User.following?(@current_user.id, params[:id])
+      user = User.find_by(id: @current_user.id)
+      user.follow(params[:id])
+      render nothing: true, :status => :ok
+    else
+      render :json => { :errors => 'Following realtion already exists' }
+    end
+  end
+
+  def unfollow
+    authenticate_request!
+    if User.following?(@current_user.id, params[:id])
+      user = User.find_by(id: @current_user.id)
+      user.unfollow(params[:id])
+      render nothing: true, :status => :ok
+    else
+      render :json => { :errors => 'Following realtion does not exists' }
+    end
+
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -48,8 +72,9 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def update
-    @user = User.update(params[:id], user_params)
-    if @user.save
+    user = User.find_by(id: params[:id])
+    user.update(user_params_update)
+    if user.save
       render :nothing => true, :status => :no_content
     else
       render :json => { :errors => @user.errors.messages }, :status => :bad_request
@@ -74,6 +99,11 @@ class Api::V1::UsersController < Api::V1::BaseController
   def user_params
     params.require(:user).permit(:pseudo, :first_name, :last_name, :email, :password,:description, :img_url)
   end
+
+  def user_params_update
+    params.require(:user).permit(:first_name, :last_name, :description, :img_url)
+  end
+
 
   def authentication_payload(user)
     return nil unless user && user.id
