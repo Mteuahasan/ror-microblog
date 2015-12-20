@@ -4,7 +4,7 @@ RSpec.describe Api::V1::MoodsController, :type => :controller do
   describe "Moods" do
     it "should create a mood" do
       authenticate
-      create
+      create(name: "Hello", value: 10)
       expect(response).to have_http_status(:created)
     end
 
@@ -20,7 +20,7 @@ RSpec.describe Api::V1::MoodsController, :type => :controller do
       get :index
       body = JSON.parse response.body
       expect(response).to have_http_status(:ok)
-      expect(body.length).to eq(1)
+      expect(body.length).to eq(10)
     end
   end
 
