@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, :type => :controller do
-  describe 'POST user' do
-    it 'should create an user' do
+  describe 'Users' do
+    it "should create an user" do
       create_user
       expect(response).to have_http_status(:created)
     end

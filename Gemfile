@@ -24,6 +24,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'erd'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'simplecov', :require => false, :group => :test
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
