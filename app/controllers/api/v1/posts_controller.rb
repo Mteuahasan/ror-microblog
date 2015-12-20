@@ -16,24 +16,11 @@ class Api::V1::PostsController < Api::V1::BaseController
     render(json: posts.to_json)
   end
 
-  def me
-    authenticate_request!
-    user = User.find_by(id: @current_user.id)
-    posts = Post.all.where(user_id: @current_user.id).order('created_at DESC').limit(20)
-    user.reposts.each { |post|
-      posts << post
-    }
-    posts = posts.map { |post|
-      Api::V1::PostSerializer.new(post)
-    }
-    render(json: posts.to_json)
-  end
-
   def my_likes
     authenticate_request!
     offset = params[:offset] || 0
     user = User.find_by(id: @current_user.id)
-    puts user.likes.all.limit(20).offset(offset)
+    puts user.likes.all.order('created_at DESC').limit(20).offset(offset)
     render nothing: true
   end
 

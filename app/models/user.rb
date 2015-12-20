@@ -31,6 +31,11 @@ class User < ActiveRecord::Base
     return nil
   end
 
+  def self.following?(user1, user2_id)
+    user2 = User.find_by(id: user2_id)
+    User.find_by(id: user1).following.include?(user2)
+  end
+
   def password_changed?
     !self.password.blank?
   end

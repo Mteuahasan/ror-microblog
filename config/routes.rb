@@ -3,8 +3,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'search' => "posts#find", as: 'search'
       get "posts/me/likes" => "posts#my_likes", as: 'posts_me_likes'
-      get "posts/me" => "posts#me", as: 'posts_me'
 
+      get "users/following/:id" => "users#following?", as: 'user_following'
+      get "users/:id/posts" => "users#user_posts", as: 'user_post'
       post 'users/authenticate' => 'users#authenticate'
       get 'users/me' => 'users#me', as: 'user_me'
       resources :users, only: [:index, :create, :show, :update, :destroy]
