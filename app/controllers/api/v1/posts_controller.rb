@@ -3,19 +3,22 @@ class Api::V1::PostsController < Api::V1::BaseController
     authenticate_request!
     offset = params[:offset] || 0
     posts = Post.where(user: @current_user.following).order('created_at DESC').limit(20).offset(offset)
-
-    last_date = posts[-1].created_at
-    first_date = posts[0].created_at
-    @current_user.following.each { |user|
-      user.reposts.where(created_at: last_date..first_date).each { |post|
-        posts << post
+    if posts.length > 0
+      last_date = posts[-1].created_at
+      first_date = posts[0].created_at
+      @current_user.following.each { |user|
+        user.reposts.where(created_at: last_date..first_date).each { |post|
+          posts << post
+        }
       }
-    }
-    posts = posts.map { |post|
-      Api::V1::PostSerializer.new(post)
-    }
-    posts.sort! { |a, b| b.created_at <=> a.created_at }
-    render(json: posts.to_json)
+      posts = posts.map { |post|
+        Api::V1::PostSerializer.new(post)
+      }
+      posts.sort! { |a, b| b.created_at <=> a.created_at }
+      render(json: posts.to_json)
+    else
+      render nothing: true, status: :not_found
+    end
   end
 
   def find

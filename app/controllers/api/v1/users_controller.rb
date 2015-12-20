@@ -74,7 +74,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     user = User.find_by(id: params[:id])
     user.update(user_params_update)
     if user.save
-      render :nothing => true, :status => :no_content
+      render :json => user.to_json, :status => :ok
     else
       render :json => { :errors => @user.errors.messages }, :status => :bad_request
     end

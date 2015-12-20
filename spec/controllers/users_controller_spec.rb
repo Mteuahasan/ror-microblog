@@ -73,12 +73,24 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
       authenticate
       user_before = JSON.parse response.body
       put :update, id: user_before['user']['id'], user: {first_name: 'Cornichon', description:'Petit concombre vinaigré'}
-      get :show, pseudo: user_before['user']['pseudo']
       user_after = JSON.parse response.body
-      expect(user_after['user']['description']).to eq('Petit concombre vinaigré')
+      expect(user_after['description']).to eq('Petit concombre vinaigré')
       expect(response).to have_http_status(:ok)
+    end
+
+    it 'should list the users posts' do
       authenticate
-      expect(response).to have_http_status(:success)
+      body = JSON.parse response.body
+      id = body["user"]["id"]
+      request.headers["Authorization"] = body["auth_token"]
+      @controller = Api::V1::PostsController.new
+      post :create, post: {content: "Hello world", mood_id: 1}
+      body = JSON.parse response.body
+      body["post"]["id"]
+      @controller = Api::V1::UsersController.new
+      get :user_posts, id: id
+      body = JSON.parse response.body
+      expect(body.length).to eq(1)
     end
   end
 
