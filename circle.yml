@@ -7,7 +7,7 @@ deployment:
 database:
   override:
     - cp config/database.yml.ci config/database.yml
-    - bundle exec rake db:create db:migrate permissions:permissions --trace
+    - bundle exec rake db:create db:migrate --trace
 machine:
   ruby:
     version: 2.2.3
