@@ -1,0 +1,27 @@
+.moods-selector {
+  margin-bottom: 10px;
+}
+
+.mood-selector {
+  width: 50px;
+  opacity: .5;
+  cursor: pointer;
+  transition: opacity .3s;
+
+
+  &.selected, &:hover {
+    opacity: 1;
+  }
+
+  &.select {
+    cursor: default;
+  }
+}
+
+.selected-mood {
+  text-align: right;
+
+  img {
+    width: 80px;
+  }
+}

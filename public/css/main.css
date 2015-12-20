@@ -155,3 +155,21 @@ textarea {
 .profile-picture {
   width: 150px;
   height: 150px; }
+
+.moods-selector {
+  margin-bottom: 10px; }
+
+.mood-selector {
+  width: 50px;
+  opacity: .5;
+  cursor: pointer;
+  transition: opacity .3s; }
+  .mood-selector.selected, .mood-selector:hover {
+    opacity: 1; }
+  .mood-selector.select {
+    cursor: default; }
+
+.selected-mood {
+  text-align: right; }
+  .selected-mood img {
+    width: 80px; }

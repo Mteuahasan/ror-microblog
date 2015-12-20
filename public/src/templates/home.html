@@ -1,13 +1,24 @@
 <template>
   <section>
     <div class="row">
+      <!-- User information -->
       <div class="well col-md-3">
         <h2>${user.pseudo}</h2>
         <p>${user.first_name} ${user.last_name}</p>
-        <p>Joined ${user.since}</p>
       </div>
       <div class="well col-md-9">
+        <!-- Send a new post -->
         <form role="form" submit.delegate="submitPost()">
+          <div class="moods-selector">
+            <img repeat.for="mood of moods"
+              src="/images/moods/${mood.img_url}.svg" alt="${mood.name}"
+              class="mood-selector ${(selectedMood && selectedMood.id == mood.id) ? 'selected' : ''}"
+              click.delegate="selectMood($index)">
+          </div>
+          <div if.bind="selectedMood" class="selected-mood">
+            ${selectedMood.name}
+            <img src="/images/moods/${selectedMood.img_url}.svg" alt="${selectedMood.name}">
+          </div>
           <div class="form-group">
             <textarea value.bind="content" class="form-control" rows="3"></textarea>
             <div>${content.length}/280</div>
@@ -16,6 +27,7 @@
         </form>
       </div>
     </div>
+    <!-- Timeline -->
 
   </section>
 </template>

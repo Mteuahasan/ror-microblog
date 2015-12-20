@@ -27,14 +27,11 @@ export class Account {
           this.user = this.me
         } else {
           this.isMe = false
-          this.http.fetch(`/users/${params.pseudo}`, {
-            method: 'get',
-            headers: {'Content-Type': 'application/json'}
-          })
-          .then(response => response.json())
-          .then(data => {
-            this.user = data.user
-          })
+          this.http.fetch(`/users/${params.pseudo}`,)
+            .then(response => response.json())
+            .then(data => {
+              this.user = data.user
+            })
         }
       })
     }

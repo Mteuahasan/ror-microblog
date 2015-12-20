@@ -10,6 +10,8 @@ import 'fetch'
 export class Home {
   content = ''
   user = {}
+  moods = []
+  selectedMood = null
 
   constructor(http, auth, observerLocator) {
     http.configure(config => {
@@ -28,8 +30,13 @@ export class Home {
   activate() {
     this.auth.getMe().then(response => {
       this.user = response.user
-      this.user.since = moment(this.user.created_at).format("MMMM YYYY")
     })
+
+    this.http.fetch('/moods')
+      .then(response => response.json())
+      .then(data => {
+        this.moods = data.map(mood => mood.mood)
+      })
   }
 
   contentUpdate() {
@@ -39,18 +46,25 @@ export class Home {
     }
   }
 
+  selectMood(index) {
+    this.selectedMood = this.moods[index]
+  }
+
   submitPost() {
-    this.http.fetch('/posts', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: json({
-        content: this.content,
-        mood_id: 1 // temporary
+    if (this.selectedMood) {
+      this.http.fetch('/posts', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: json({
+          content: this.content,
+          mood_id: this.selectedMood.id
+        })
       })
-    })
-    .then(response => {
-      console.log(response)
-      this.content = ''
-    })
+      .then(response => {
+        console.log(response)
+        this.content = ''
+        this.selectedMood = null
+      })
+    }
   }
 }
