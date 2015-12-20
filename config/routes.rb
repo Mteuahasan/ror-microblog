@@ -6,9 +6,10 @@ Rails.application.routes.draw do
       get 'users/me' => 'users#me', as: 'user_me'
       get "users/following/:id" => "users#following?", as: 'user_following'
       post 'users/authenticate' => 'users#authenticate'
+      get "users/:pseudo" => "users#show", as: 'user_show'
       get "users/:id/likes" => "users#user_likes", as: 'user_liked_posts'
       get "users/:id/posts" => "users#user_posts", as: 'user_post'
-      resources :users, only: [:index, :create, :show, :update, :destroy]
+      resources :users, only: [:index, :create, :update, :destroy]
 
       post "posts/:id/repost" => "posts#repost", as: 'posts_repost'
       resources :posts, only: [:create, :show, :update, :destroy]
