@@ -1,10 +1,18 @@
 <template>
+  <require from="./components/sinceDate"></require>
   <div class="row">
     <div class="col-md-3">
+      <div>
+        <img src="${user.img_url}" alt="Profile picture" class="profile-picture">
+      </div>
       <h2>${user.pseudo}</h2>
       <p>${user.first_name} ${user.last_name}</p>
+      <p>${user.description}</p>
       <p><a href="mailto:${user.email}">${user.email}</a></p>
-      <p>Joined ${user.since}</p>
+      <p><since-date date.bind="user.created_at"></since-date></p>
+      <p if.bind="isMe">
+        <a route-href="route: account-edit">Edit my account</a>
+      </p>
     </div>
   </div>
 </template>

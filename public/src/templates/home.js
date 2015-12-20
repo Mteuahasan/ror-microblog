@@ -1,18 +1,22 @@
+import moment from 'moment'
 import {inject, ObserverLocator} from 'aurelia-framework'
 import {HttpClient, json} from 'aurelia-fetch-client'
+import {AuthService} from 'aurelia-auth'
+
 
 import 'fetch'
 
-@inject(HttpClient, ObserverLocator)
-export class Users {
-  heading = 'Welcome'
+@inject(HttpClient, AuthService, ObserverLocator)
+export class Home {
   content = ''
+  user = {}
 
-  constructor(http, observerLocator) {
+  constructor(http, auth, observerLocator) {
     http.configure(config => {
       config.withBaseUrl('/api/v1')
     })
     this.http = http
+    this.auth = auth
 
     let subscription = observerLocator
       .getObserver(this, 'content')
@@ -22,7 +26,10 @@ export class Users {
   }
 
   activate() {
-
+    this.auth.getMe().then(response => {
+      this.user = response.user
+      this.user.since = moment(this.user.created_at).format("MMMM YYYY")
+    })
   }
 
   contentUpdate() {

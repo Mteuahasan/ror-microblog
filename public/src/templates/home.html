@@ -2,7 +2,9 @@
   <section>
     <div class="row">
       <div class="well col-md-3">
-        <h4>${heading}</h4>
+        <h2>${user.pseudo}</h2>
+        <p>${user.first_name} ${user.last_name}</p>
+        <p>Joined ${user.since}</p>
       </div>
       <div class="well col-md-9">
         <form role="form" submit.delegate="submitPost()">

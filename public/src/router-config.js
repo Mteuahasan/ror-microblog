@@ -29,7 +29,10 @@ export default class {
           route: 'logout', name: 'logout',
           moduleId: tmpl('logout'), nav: false, title:'Logout', authRoute: true
         }, {
-          route: 'account', name: 'account',
+          route: 'account/edit', name: 'account-edit',
+          moduleId: tmpl('account-edit'), nav: false, title:'Edit my account', auth: true
+        }, {
+          route: 'account/:pseudo', name: 'account',
           moduleId: tmpl('account'), nav: false, title:'Account', auth: true
         }
       ])

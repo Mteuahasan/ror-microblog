@@ -15,15 +15,13 @@
         for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
         return o;
       }
-      var moods = shuffle(['cool', 'excited', 'funny', 'happy', 'love', 'nervous', 'pirat', 'sad', 'shocked', 'tired'])
+      var moods = shuffle(['cool', 'excited', 'funny', 'happy', 'love', 'nervous', 'pirate', 'sad', 'shocked', 'tired'])
       // SIMPLE LOADER
       var i
       function runLoader() {
-        console.log("loading")
         i = parseInt($loader.getAttribute('data-index')) + 1
         if (i == moods.length) i = 0
         $loader.setAttribute('data-index', i)
-        console.log(i)
         $loader.setAttribute('src', `./images/moods/${moods[i]}.svg`)
         if (document.getElementById('loader')) {
           setTimeout(runLoader, 50)

@@ -3,7 +3,7 @@ import {AuthService} from 'aurelia-auth'
 
 @inject(AuthService)
 
-export class Signup {
+export class Login {
   heading = 'Sign Up'
 
   user = {

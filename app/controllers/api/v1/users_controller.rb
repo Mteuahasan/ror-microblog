@@ -50,7 +50,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   def update
     @user = User.update(params[:id], user_params)
     if @user.save
-      render :nothing => true, :status => :created
+      render :nothing => true, :status => :no_content
     else
       render :json => { :errors => @user.errors.messages }, :status => :bad_request
     end
@@ -72,7 +72,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:pseudo, :first_name, :last_name, :email, :password)
+    params.require(:user).permit(:pseudo, :first_name, :last_name, :email, :password, :description, :img_url)
   end
 
   def authentication_payload(user)
