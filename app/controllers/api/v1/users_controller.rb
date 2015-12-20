@@ -20,6 +20,18 @@ class Api::V1::UsersController < Api::V1::BaseController
     render(json: posts.to_json)
   end
 
+  def user_likes
+    authenticate_request!
+    user_id = params[:id]
+    offset = params[:offset] || 0
+    user = User.find_by(id: user_id)
+    likes = user.likes.all.order('created_at DESC').limit(20).offset(offset)
+    likes = likes.map { |like|
+      Api::V1::PostSerializer.new(like)
+    }
+    render(json: likes.to_json)
+  end
+
   def following?
     authenticate_request!
     user2 = params[:id]
