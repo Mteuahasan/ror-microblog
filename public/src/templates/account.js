@@ -33,7 +33,7 @@ export class Account {
           })
           .then(response => response.json())
           .then(data => {
-            this.user = data
+            this.user = data.user
           })
         }
       })

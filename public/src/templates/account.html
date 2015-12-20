@@ -1,9 +1,10 @@
 <template>
   <require from="./components/sinceDate"></require>
+  <require from="./components/followButton"></require>
   <div class="row">
     <div class="col-md-3">
       <div>
-        <img src="${user.img_url}" alt="Profile picture" class="profile-picture">
+        <img src="${user.img_url || '/images/moods/cool.svg'}" alt="Profile Picture" class="profile-picture">
       </div>
       <h2>${user.pseudo}</h2>
       <p>${user.first_name} ${user.last_name}</p>
@@ -12,6 +13,9 @@
       <p><since-date date.bind="user.created_at"></since-date></p>
       <p if.bind="isMe">
         <a route-href="route: account-edit">Edit my account</a>
+      </p>
+      <p if.bind="!isMe">
+        <follow-button user1.bind="this.me.id" user2.bind="this.user.id">Follow</follow-button>
       </p>
     </div>
   </div>

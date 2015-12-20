@@ -1,3 +1,4 @@
 <template>
-  
+  <button if.bind="!isFollowing" click.delegate="followUser">Follow</button>
+  <button if.bind="isFollowing" click.delegate="unfollowUser">Unfollow</button>
 </template>

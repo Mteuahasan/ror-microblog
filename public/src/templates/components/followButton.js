@@ -1,15 +1,45 @@
-import {customElement, bindable} from 'aurelia-framework'
+import {customElement, bindable, inject} from 'aurelia-framework'
+import {HttpClient, json} from 'aurelia-fetch-client'
 
 @customElement('follow-button')
+@bindable('user1')
+@bindable('user2')
 
-@bindable('current-user-id')
-@bindable('user-to-follow-id')
+@inject(HttpClient)
 
 export class FollowButton {
-  constructor() {
+  isFollowing = false
+
+  constructor(http) {
+    http.configure(config => {
+      config.withBaseUrl('/api/v1')
+    })
+    this.http = http
   }
 
   bind() {
+    this.checkFollowing()
+  }
 
+  checkFollowing() {
+    this.http.fetch(`/users/following/${this.user2}`, {
+      method: 'get',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.isFollowing = data
+    })
+  }
+
+  followUser() {
+    this.http.fetch(`/users/following/${this.user2}`, {
+      method: 'get',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.isFollowing = data
+    })
   }
 }
