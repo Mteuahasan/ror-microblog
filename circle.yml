@@ -6,9 +6,8 @@ deployment:
       - heroku run bundle exec rake db:migrate --app moodlr
 database:
   override:
-    - export RAILS_ENV="test"
-    - export RACK_ENV="test"
-    - bundle exec rake db:create db:migrate db:seed permissions:permissions --trace
+    - cp config/database.yml.ci config/database.yml
+    - bundle exec rake db:create db:migrate permissions:permissions --trace
 machine:
   ruby:
     version: 2.2.3
