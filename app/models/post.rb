@@ -4,10 +4,12 @@ class Post < ActiveRecord::Base
   validates :mood, presence: true
 
   has_many :like_relationships, class_name: "LikeRelationship", foreign_key: "post_id", dependent: :destroy
-  has_many :likes, through: :like_relationships, source: :user
+  has_many :likes, through: :like_relationships, source: :post
+  has_many :likers, through: :like_relationships, source: :user
 
   has_many :repost_relationships, class_name: "RepostRelationship", foreign_key: "post_id", dependent: :destroy
   has_many :reposts, through: :repost_relationships, source: :post
+  has_many :reposters, through: :repost_relationships, source: :user
 
   def like(user_id)
     like_relationships.create(user_id: user_id)

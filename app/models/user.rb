@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :repost_relationships, class_name: "RepostRelationship", foreign_key: "user_id", dependent: :destroy
+  has_many :reposts, through: :repost_relationships, source: :post
 
   before_save :hash_password, :if=>:password_changed?
 
