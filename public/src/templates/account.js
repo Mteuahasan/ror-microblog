@@ -52,7 +52,6 @@ export class Account {
       .then(response => response.json())
       .then(data => {
         this.posts = data.map(post => post.post)
-        console.log(this.posts)
       })
   }
 }

@@ -40,7 +40,9 @@ textarea {
   margin-bottom: 10px; }
 
 .mood-selector {
-  width: 50px;
+  position: relative;
+  top: 10px;
+  width: 40px;
   opacity: .5;
   cursor: pointer;
   transition: opacity .3s; }

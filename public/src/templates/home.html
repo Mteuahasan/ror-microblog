@@ -1,4 +1,5 @@
 <template>
+  <require from="./components/postsList"></require>
   <section>
     <div class="row">
       <!-- User information -->
@@ -7,9 +8,9 @@
         <h2>@${user.pseudo}</h2>
         <p>${user.first_name} ${user.last_name}</p>
       </div>
-      <div class="well col-md-9">
+      <div class="col-md-9">
         <!-- Send a new post -->
-        <form role="form" submit.delegate="submitPost()">
+        <form class="well" role="form" submit.delegate="submitPost()">
           <div class="row moods-selector">
             <div class="col-md-9 moods-list">
               <img repeat.for="mood of moods"
@@ -28,9 +29,12 @@
           </div>
           <button type="submit" class="btn btn-default">Post</button>
         </form>
+
+        <!-- Timeline -->
+        <div>
+          <posts-list posts.bind="posts"></posts-list>
+        </div>
       </div>
     </div>
-    <!-- Timeline -->
-
   </section>
 </template>

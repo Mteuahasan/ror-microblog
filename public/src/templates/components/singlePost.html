@@ -31,8 +31,10 @@
       <p>${postData.content}</p>
     </div>
     <footer>
-      <span class="glyphicon glyphicon-heart"></span>
-      <span class="glyphicon glyphicon-random"></span>
+      <div if.bind="user.id === me.id">
+        <span class="glyphicon glyphicon-heart"></span>
+        <span class="glyphicon glyphicon-random"></span>
+      </div>
     </footer>
   </div>
 </template>

@@ -12,6 +12,7 @@ export class Home {
   user = {}
   moods = []
   selectedMood = null
+  posts = []
 
   constructor(http, auth, observerLocator) {
     http.configure(config => {
@@ -38,18 +39,20 @@ export class Home {
         this.moods = data.map(mood => mood.mood)
       })
 
+    this.getTimeline()
+  }
+
+  getTimeline() {
     this.http.fetch('/posts')
       .then(response => {
         if (response.status === 200) {
-          console.log(response.status)
           return response.json()
         }
       })
       .then(data => {
-        console.log(data)
-        if (data && data.user) {
-          this.user = data.user
-          this.getUserPosts()
+        if (data) {
+          this.posts = data.map(post => post.post)
+          console.log(this.posts)
         }
       })
   }
@@ -76,7 +79,6 @@ export class Home {
         })
       })
       .then(response => {
-        console.log(response)
         this.content = ''
         this.selectedMood = null
       })
