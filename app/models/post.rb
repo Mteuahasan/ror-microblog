@@ -1,7 +1,8 @@
 class Post < ActiveRecord::Base
   belongs_to :mood
   belongs_to :user
-  validates :mood, presence: true
+  validates :mood_id, presence: true
+  validates_length_of :content, :minimum => 5, :maximum => 280
 
   has_many :like_relationships, class_name: "LikeRelationship", foreign_key: "post_id", dependent: :destroy
   has_many :likes, through: :like_relationships, source: :post

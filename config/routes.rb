@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'search' => "posts#find", as: 'search'
+      get "posts/me/likes" => "posts#my_likes", as: 'posts_me_likes'
+      get "posts/me" => "posts#me", as: 'posts_me'
 
       post 'users/authenticate' => 'users#authenticate'
-      get 'users/me' => 'users#me'
+      get 'users/me' => 'users#me', as: 'user_me'
       resources :users, only: [:index, :create, :show, :update, :destroy]
 
       post "posts/:id/repost" => "posts#repost", as: 'posts_repost'

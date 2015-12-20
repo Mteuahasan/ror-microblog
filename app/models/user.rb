@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :repost_relationships, class_name: "RepostRelationship", foreign_key: "user_id", dependent: :destroy
   has_many :reposts, through: :repost_relationships, source: :post
 
+  has_many :like_relationships, class_name: "LikeRelationship", foreign_key: "user_id", dependent: :destroy
+  has_many :likes, through: :like_relationships, source: :post
+
   before_save :hash_password, :if=>:password_changed?
 
   def self.find_by_credentials(identifier, password)
