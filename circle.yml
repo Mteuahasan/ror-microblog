@@ -4,6 +4,11 @@ deployment:
     commands:
       - git push git@heroku.com:moodlr.git
       - heroku run bundle exec rake db:migrate --app moodlr
+database:
+  override:
+    - export RAILS_ENV="test"
+    - export RACK_ENV="test"
+    - bundle exec rake db:create db:migrate
 machine:
   ruby:
     version: 2.2.3
