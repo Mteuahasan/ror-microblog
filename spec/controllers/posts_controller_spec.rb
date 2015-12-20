@@ -15,9 +15,37 @@ RSpec.describe Api::V1::PostsController, :type => :controller do
       post :create, post: {content: "Hello world", mood_id: 1}
       expect(response).to have_http_status(:created)
     end
+
+    it "should find a post" do
+      create_post
+      post :find, content: "Hello"
+      body = JSON.parse response.body
+      expect(body.length).to eq(1)
+    end
+
+    it "should show a post" do
+      create_post
+      post :show, id: create_post
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "should like a post" do
+      create_post
+      post :like, id: create_post
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   private
+
+  def create_post
+    authenticate
+    body = JSON.parse response.body
+    request.headers["Authorization"] = body["auth_token"]
+    post :create, post: {content: "Hello world", mood_id: 1}
+    body = JSON.parse response.body
+    body["post"]["id"]
+  end
 
   def authenticate(email: "hello@matthieulachassagne.com", password: "password1")
     @controller = Api::V1::UsersController.new

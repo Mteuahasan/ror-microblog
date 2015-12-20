@@ -55,11 +55,10 @@ class Api::V1::PostsController < Api::V1::BaseController
   def create
     authenticate_request!
     params = post_params
-    puts @current_user.id
     params["user_id"] = @current_user.id
     @post = Post.new(params)
     if @post.save
-      render :nothing => true, :status => :created
+      render json: Api::V1::PostSerializer.new(@post).to_json, :status => :created
     else
       render :json => { :errors => @post.errors.messages }, :status => :bad_request
     end
