@@ -1,5 +1,13 @@
 class Api::V1::MoodsController < Api::V1::BaseController
 
+  def index
+    moods = Mood.all
+    moods = moods.map { |mood|
+      Api::V1::MoodSerializer.new(mood)
+    }
+    render(json: moods.to_json)
+  end
+
   def create
     @mood = Mood.new(mood_params)
     if @mood.save
