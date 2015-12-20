@@ -2,6 +2,8 @@ class Api::V1::PostsController < Api::V1::BaseController
   def index
     authenticate_request!
     offset = params[:offset] || 0
+    users = @current_user.following
+    users.unshift(@current_user)
     posts = Post.where(user: @current_user.following).order('created_at DESC').limit(20).offset(offset)
     last_date = posts[-1].created_at
     first_date = posts[0].created_at
