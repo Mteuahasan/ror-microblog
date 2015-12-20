@@ -7,6 +7,7 @@ gem 'rails', '4.2.5'
 gem 'pg'
 # Use rspec
 gem 'rspec'
+gem 'rspec-rails'
 # Use AMS
 gem 'active_model_serializers'
 # Use JWT for user authentication
