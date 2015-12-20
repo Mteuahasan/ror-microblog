@@ -9,6 +9,7 @@ export class Account {
   user = {}
   me = {}
   isMe = false
+  posts = []
 
   constructor(http, auth) {
     http.configure(config => {
@@ -25,15 +26,26 @@ export class Account {
         if (params.pseudo === this.me.pseudo) {
           this.isMe = true
           this.user = this.me
+          this.getUserPosts()
         } else {
           this.isMe = false
           this.http.fetch(`/users/${params.pseudo}`,)
             .then(response => response.json())
             .then(data => {
               this.user = data.user
+              this.getUserPosts()
             })
         }
       })
     }
+  }
+
+  getUserPosts() {
+    this.http.fetch(`/users/${this.user.id}/posts/`)
+      .then(response => response.json())
+      .then(data => {
+        this.posts = data.map(post => post.post)
+        console.log(this.posts)
+      })
   }
 }

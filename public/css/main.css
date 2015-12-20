@@ -1,5 +1,15 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+.tar {
+  text-align: right !important; }
+
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: #f7f7f7 !important; }
 
 #loader {
   display: block;
@@ -8,155 +18,25 @@ body {
   margin-top: 100px;
   stroke-color: red; }
 
-.splash {
-  text-align: center;
-  margin: 10% 0 0 0;
-  box-sizing: border-box; }
-
-.splash .message {
-  font-size: 72px;
-  line-height: 72px;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
-  text-transform: uppercase;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
-.splash .fa-spinner {
-  text-align: center;
-  display: inline-block;
-  font-size: 72px;
-  margin-top: 50px; }
-
-.page-host {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50px;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto; }
-
-@media print {
-  .page-host {
-    position: absolute;
-    left: 10px;
-    right: 0;
-    top: 50px;
-    bottom: 0;
-    overflow-y: inherit;
-    overflow-x: inherit; } }
-
-section {
-  margin: 0 20px; }
-
-.navbar-nav li.loader {
-  margin: 12px 24px 0 6px; }
-
-.pictureDetail {
-  max-width: 425px; }
-
-/* animate page transitions */
-section.au-enter-active {
-  -webkit-animation: fadeInRight 1s;
-  animation: fadeInRight 1s; }
-
-div.au-stagger {
-  /* 50ms will be applied between each successive enter operation */
-  -webkit-animation-delay: 50ms;
-  animation-delay: 50ms; }
-
-.card-container.au-enter {
-  opacity: 0 !important; }
-
-.card-container.au-enter-active {
-  -webkit-animation: fadeIn 2s;
-  animation: fadeIn 2s; }
-
-.card {
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #CCC;
-  border-radius: 8px;
-  text-align: center;
-  padding: 0;
-  background-color: #337ab7;
-  color: #88acd9;
-  margin-bottom: 32px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
-
-.card .content {
-  margin-top: 10px; }
-
-.card .content .name {
-  color: white;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-  font-size: 18px; }
-
-.card .header-bg {
-  /* This stretches the canvas across the entire hero unit */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  border-bottom: 1px #FFF solid;
-  border-radius: 6px 6px 0 0; }
-
-.card .avatar {
-  position: relative;
-  margin-top: 15px;
-  z-index: 100; }
-
-.card .avatar img {
-  width: 100px;
-  height: 100px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  border: 2px #FFF solid; }
-
-/* animation definitions */
-@-webkit-keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0); }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none; } }
-
-@keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(100%, 0, 0);
-    -ms-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0); }
-  100% {
-    opacity: 1;
-    -webkit-transform: none;
-    -ms-transform: none;
-    transform: none; } }
-
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
+.navbar.navbar-default {
+  background-color: #fff; }
 
 textarea {
   resize: none; }
 
 .profile-picture {
   width: 150px;
-  height: 150px; }
+  height: 150px;
+  background-color: #fff;
+  border-radius: 50%; }
+  .profile-picture.small {
+    width: 60px;
+    height: 60px; }
 
 .moods-selector {
+  height: 90px; }
+
+.moods-list {
   margin-bottom: 10px; }
 
 .mood-selector {
@@ -173,3 +53,29 @@ textarea {
   text-align: right; }
   .selected-mood img {
     width: 80px; }
+
+.single-post {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: solid 1px #d1d1d1;
+  box-shadow: 1px 1px 2px 0 #d1d1d1; }
+  .single-post header {
+    padding: 20px 40px;
+    background-color: #f7f7f7;
+    border-bottom: solid 1px #d1d1d1; }
+  .single-post footer {
+    padding: 10px 40px;
+    background-color: #f7f7f7;
+    border-top: solid 1px #d1d1d1; }
+  .single-post h3 {
+    margin-top: 0; }
+  .single-post h3, .single-post h4 {
+    font-weight: 300; }
+  .single-post .content {
+    padding: 20px 40px; }
+  .single-post .mood h3 {
+    text-transform: uppercase;
+    color: #4a90e2; }
+  .single-post .mood img {
+    width: 60px;
+    height: 60px; }

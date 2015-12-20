@@ -1,12 +1,14 @@
 <template>
   <require from="./components/sinceDate"></require>
   <require from="./components/followButton"></require>
+  <require from="./components/postsList"></require>
+
   <div class="row">
     <div class="col-md-3">
       <div>
         <img src="${user.img_url || '/images/moods/cool.svg'}" alt="Profile Picture" class="profile-picture">
       </div>
-      <h2>${user.pseudo}</h2>
+      <h2>@${user.pseudo}</h2>
       <p>${user.first_name} ${user.last_name}</p>
       <p>${user.description}</p>
       <p><a href="mailto:${user.email}">${user.email}</a></p>
@@ -17,6 +19,9 @@
       <p if.bind="!isMe">
         <follow-button user1.bind="this.me.id" user2.bind="this.user.id">Follow</follow-button>
       </p>
+    </div>
+    <div class="col-md-9">
+      <posts-list posts.bind="posts"></posts-list>
     </div>
   </div>
 </template>
