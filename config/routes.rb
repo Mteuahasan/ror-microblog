@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       get "posts/:id/like" => "posts#like", as: 'user_like_posts'
       get "posts/:id/unlike" => "posts#unlike", as: 'user_unlike_posts'
       post "posts/:id/repost" => "posts#repost", as: 'posts_repost'
-      resources :posts, only: [:create, :show, :update, :destroy]
+      resources :posts, only: [:index, :create, :show, :update, :destroy]
 
       resources :moods, only: [:index, :create, :show, :update, :destroy]
     end
