@@ -26,9 +26,9 @@ class Api::V1::UsersController < Api::V1::BaseController
     offset = params[:offset] || 0
     user = User.find_by(id: user_id)
     likes = user.likes.all.order('created_at DESC').limit(20).offset(offset)
-    likes = likes.map { |like|
+    likes = likes.map do |like|
       Api::V1::PostSerializer.new(like)
-    }
+    end
     render(json: likes.to_json)
   end
 
@@ -72,7 +72,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:pseudo, :first_name, :last_name, :email, :password, :description, :img_url)
+    params.require(:user).permit(:pseudo, :first_name, :last_name, :email, :password,:description, :img_url)
   end
 
   def authentication_payload(user)

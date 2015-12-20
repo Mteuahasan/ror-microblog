@@ -56,7 +56,15 @@ class Api::V1::PostsController < Api::V1::BaseController
   def repost
     authenticate_request!
     user_id = @current_user.id
-    render plain: params[:id]
+    Post.find_by(id: params[:id]).repost(user_id)
+    render :status => :created
+  end
+
+  def repost
+    authenticate_request!
+    user_id = @current_user.id
+    Post.find_by(id: params[:id]).unrepost(user_id)
+    render :status => :ok
   end
 
   private

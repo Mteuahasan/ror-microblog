@@ -1,5 +1,4 @@
 class Api::V1::MoodsController < Api::V1::BaseController
-
   def index
     moods = Mood.all
     moods = moods.map { |mood|
@@ -22,5 +21,4 @@ class Api::V1::MoodsController < Api::V1::BaseController
   def mood_params
     params.require(:mood).permit(:name, :value, :image_url)
   end
-
 end
