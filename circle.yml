@@ -8,7 +8,7 @@ database:
   override:
     - export RAILS_ENV="test"
     - export RACK_ENV="test"
-    - bundle exec rake db:create db:migrate
+    - bundle exec rake db:create db:migrate db:seed permissions:permissions --trace
 machine:
   ruby:
     version: 2.2.3
