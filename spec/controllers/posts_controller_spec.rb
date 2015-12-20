@@ -34,6 +34,12 @@ RSpec.describe Api::V1::PostsController, :type => :controller do
       post :like, id: create_post
       expect(response).to have_http_status(:ok)
     end
+
+    it "should repost a post" do
+      create_post
+      post :repost, id: create_post
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   private

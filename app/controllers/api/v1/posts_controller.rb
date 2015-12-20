@@ -64,27 +64,27 @@ class Api::V1::PostsController < Api::V1::BaseController
     end
   end
 
-  def update
-    @user = User.update(params[:id], user_params)
-    if @user.save
-      render :nothing => true, :status => :created
-    else
-      render :json => { :errors => @user.errors.messages }, :status => :bad_request
-    end
-  end
+  # def update
+  #   @user = User.update(params[:id], user_params)
+  #   if @user.save
+  #     render :nothing => true, :status => :created
+  #   else
+  #     render :json => { :errors => @user.errors.messages }, :status => :bad_request
+  #   end
+  # end
 
   def repost
     authenticate_request!
     user_id = @current_user.id
     Post.find_by(id: params[:id]).repost(user_id)
-    render :status => :created
+    render nothing: true, :status => :ok
   end
 
-  def repost
+  def unrepost
     authenticate_request!
     user_id = @current_user.id
     Post.find_by(id: params[:id]).unrepost(user_id)
-    render :status => :ok
+    render nothing: true, :status => :ok
   end
 
   private
