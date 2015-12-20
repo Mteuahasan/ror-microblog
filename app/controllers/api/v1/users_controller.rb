@@ -40,7 +40,6 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def follow
     authenticate_request!
-    puts !User.following?(@current_user.id, params[:id])
     if !User.following?(@current_user.id, params[:id])
       user = User.find_by(id: @current_user.id)
       user.follow(params[:id])
@@ -59,7 +58,6 @@ class Api::V1::UsersController < Api::V1::BaseController
     else
       render :json => { :errors => 'Following realtion does not exists' }
     end
-
   end
 
   def create

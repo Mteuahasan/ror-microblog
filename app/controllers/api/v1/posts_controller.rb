@@ -30,10 +30,31 @@ class Api::V1::PostsController < Api::V1::BaseController
     render(json: Api::V1::PostSerializer.new(post).to_json)
   end
 
+  def like
+    authenticate_request!
+    if !Post.like?(@current_user.id, params[:id])
+      post = Post.find_by(id: params[:id])
+      post.like(@current_user.id)
+      render nothing: true, :status => :ok
+    else
+      render :json => { :errors => 'Like realtion already exists' }
+    end
+  end
+
+  def unlike
+    authenticate_request!
+    if Post.like?(@current_user.id, params[:id])
+      post = Post.find_by(id: params[:id])
+      post.unlike(@current_user.id)
+      render nothing: true, :status => :ok
+    else
+      render :json => { :errors => 'Like realtion does not exists' }
+    end
+  end
+
   def create
     authenticate_request!
     params = post_params
-    puts "%"*100
     puts @current_user.id
     params["user_id"] = @current_user.id
     @post = Post.new(params)
