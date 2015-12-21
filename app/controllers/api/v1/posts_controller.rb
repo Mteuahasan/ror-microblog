@@ -23,6 +23,11 @@ class Api::V1::PostsController < Api::V1::BaseController
     end
   end
 
+  def destroy
+    authenticate_request!
+    Post.find_by(id: params[:id]).destroy
+  end
+
   def find
     search = params[:content]
     posts = Post.all.where("content LIKE :query", query: "%#{search}%")
