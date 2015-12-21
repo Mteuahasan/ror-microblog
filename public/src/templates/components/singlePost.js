@@ -10,6 +10,8 @@ export class SinglePost {
   postData = null
   user = null
   me = null
+  isAlreadyLiked = false
+  isAlreadyReposted = false
 
   constructor(http, auth) {
     http.configure(config => {
@@ -19,14 +21,27 @@ export class SinglePost {
     this.auth = auth
     this.auth.getMe().then(response => {
       this.me = response.user
+      this.post.likes.forEach(user => {
+        if (this.me.id == user.id) {
+          console.log("YOO")
+          this.isAlreadyLiked = true
+        }
+      })
+      this.post.reposters.forEach(user => {
+        if (this.me.id == user.id) {
+          this.isAlreadyReposted = true
+        }
+      })
     })
   }
 
   bind() {
-    console.log(this.post)
     this.postData = this.post
     this.user = this.post.user
+    this.postData.likes.find(user => user.id)
+
   }
+
 
   likePost(id) {
     this.http.fetch(`/posts/${id}/like`, {
@@ -35,11 +50,40 @@ export class SinglePost {
     })
     .then(response => {
       this.postData.likes.push(this.me)
-      console.log(response)
+      this.isAlreadyLiked = true
     })
   }
 
   repostPost(id) {
+    this.http.fetch(`/posts/${id}/repost`, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      this.postData.reposters.push(this.me)
+      this.isAlreadyReposted = true
+    })
+  }
 
+  unLikePost(id) {
+    this.http.fetch(`/posts/${id}/unlike`, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      this.postData.likes.shift()
+      this.isAlreadyLiked = false
+    })
+  }
+
+  unRepostPost(id) {
+    this.http.fetch(`/posts/${id}/unrepost`, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      this.postData.reposters.shift()
+      this.isAlreadyReposted = false
+    })
   }
 }

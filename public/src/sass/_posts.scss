@@ -73,4 +73,13 @@
       height: 60px;
     }
   }
+
+  button {
+    &:hover {
+    }
+
+    &.selected {
+      color: $orange;
+    }
+  }
 }
