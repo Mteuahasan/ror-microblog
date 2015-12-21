@@ -20,29 +20,27 @@ export class Account {
   }
 
   activate(params, routeConfig, navigationInstruction) {
-    if (this.auth.isAuthenticated()) {
-      this.auth.getMe().then(response => {
-        this.me = response.user
-        if (params.pseudo === this.me.pseudo) {
-          this.isMe = true
-          this.user = this.me
-          this.getUserPosts()
-        } else {
-          this.isMe = false
-          this.http.fetch(`/users/${params.pseudo}`,)
-            .then(response => {
-              if (response.status === 200) {
-                return response.json()
-              }
-            })
-            .then(data => {
-              console.log(data)
-              this.user = data.user
-              this.getUserPosts()
-            })
-        }
-      })
-    }
+    this.auth.getMe().then(response => {
+      this.me = response.user
+      if (params.pseudo === this.me.pseudo) {
+        this.isMe = true
+        this.user = this.me
+        this.getUserPosts()
+      } else {
+        this.isMe = false
+        this.http.fetch(`/users/${params.pseudo}`,)
+          .then(response => {
+            if (response.status === 200) {
+              return response.json()
+            }
+          })
+          .then(data => {
+            console.log(data)
+            this.user = data.user
+            this.getUserPosts()
+          })
+      }
+    })
   }
 
   getUserPosts() {

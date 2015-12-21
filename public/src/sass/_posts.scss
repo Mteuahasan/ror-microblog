@@ -38,6 +38,10 @@
   border: solid 1px $gray;
   box-shadow: 1px 1px 2px 0 $gray;
   border-radius: 5px;
+
+  &.hidden {
+    display: none;
+  }
   header {
     padding: 20px 40px;
     background-color: $light-gray;

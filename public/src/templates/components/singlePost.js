@@ -1,47 +1,40 @@
 import {customElement, bindable, inject} from 'aurelia-framework'
-import {AuthService} from 'aurelia-auth'
 import {HttpClient} from 'aurelia-fetch-client'
 
-@inject(HttpClient, AuthService)
+@inject(HttpClient)
 @customElement('single-post')
 @bindable('post')
+@bindable('me')
 
 export class SinglePost {
   postData = null
   user = null
-  me = null
   isAlreadyLiked = false
   isAlreadyReposted = false
+  hidden = false
 
-  constructor(http, auth) {
+  constructor(http) {
     http.configure(config => {
       config.withBaseUrl('/api/v1')
     })
     this.http = http
-    this.auth = auth
-    this.auth.getMe().then(response => {
-      this.me = response.user
-      this.post.likes.forEach(user => {
-        if (this.me.id == user.id) {
-          console.log("YOO")
-          this.isAlreadyLiked = true
-        }
-      })
-      this.post.reposters.forEach(user => {
-        if (this.me.id == user.id) {
-          this.isAlreadyReposted = true
-        }
-      })
-    })
   }
 
   bind() {
     this.postData = this.post
     this.user = this.post.user
-    this.postData.likes.find(user => user.id)
 
+    this.post.likes.forEach(user => {
+      if (this.me == user.id) {
+        this.isAlreadyLiked = true
+      }
+    })
+    this.post.reposters.forEach(user => {
+      if (this.me == user.id) {
+        this.isAlreadyReposted = true
+      }
+    })
   }
-
 
   likePost(id) {
     this.http.fetch(`/posts/${id}/like`, {
@@ -84,6 +77,15 @@ export class SinglePost {
     .then(response => {
       this.postData.reposters.shift()
       this.isAlreadyReposted = false
+    })
+  }
+
+  deletePost(id, i) {
+    this.http.fetch(`/posts/${id}`, {
+      method: 'delete',
+    })
+    .then(response => {
+      this.hidden = true
     })
   }
 }

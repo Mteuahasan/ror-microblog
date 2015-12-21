@@ -1,4 +1,5 @@
 <template>
   <require from="./singlePost"></require>
-    <single-post repeat.for="post of allPosts" post.bind="post"></single-post>
+    <single-post repeat.for="post of allPosts" post.bind="post" me.bind="current"
+    deletePost.bind="deletePost"></single-post>
 </template>

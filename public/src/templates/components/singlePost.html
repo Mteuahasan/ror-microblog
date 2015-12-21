@@ -1,6 +1,6 @@
 <template>
   <require from="./postDate"></require>
-  <div class="single-post">
+  <div class="single-post ${hidden ? 'hidden' : ''}">
     <header>
       <div class="row">
         <div class="col-md-6">
@@ -31,7 +31,7 @@
       <p>${postData.content}</p>
     </div>
     <footer>
-      <div if.bind="user.id != me.id">
+      <div if.bind="user.id != me">
         <button if.bind="isAlreadyLiked" class="selected" click.delegate="unLikePost(postData.id)">
           ${postData.likes.length} <span class="glyphicon glyphicon-heart"></span>
         </button>
@@ -46,6 +46,17 @@
           ${postData.reposters.length} <span class="glyphicon glyphicon-random"></span>
         </button>
       </div>
+        <div if.bind="user.id == me">
+          <span>
+            ${postData.likes.length} <span class="glyphicon glyphicon-heart"></span>
+          </span>
+          <span>
+            ${postData.reposters.length} <span class="glyphicon glyphicon-random"></span>
+          </span>&nbsp;
+          <button click.delegate="deletePost(postData.id, $index)" class="pull-right">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </div>
     </footer>
   </div>
 </template>

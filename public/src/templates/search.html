@@ -1,0 +1,9 @@
+<template>
+  <require from="./components/postsList"></require>
+  <div>
+    <input type="text" value.bind="search" class="form-control" placeholder="Search a post">
+  </div>
+  <div>
+    <posts-list posts.bind="posts" current.bind="me.id"></posts-list>
+  </div>
+</template>

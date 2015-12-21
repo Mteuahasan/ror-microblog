@@ -20,6 +20,9 @@ export default class {
           route: ['','home'], name: 'home',
           moduleId: tmpl('home'), nav: true, title:'Moodler', auth: true
         }, {
+          route: 'search', name: 'search',
+          moduleId: tmpl('search'), nav: true, title:'Search', auth: true
+        }, {
           route: 'signup', name: 'signup',
           moduleId: tmpl('signup'), nav: false, title:'Signup', authRoute: true
         }, {
