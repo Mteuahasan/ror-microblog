@@ -25,12 +25,20 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   def destroy
     authenticate_request!
-    Post.find_by(id: params[:id]).destroy
+    post = Post.find_by(id: params[:id])
+    puts "*"*100
+    puts post
+    if post.user.id == @current_user.id
+      post.destroy
+      render nothing: true, status: :ok
+    else
+      render nothing: true, status: :unauthorized
+    end
   end
 
   def find
     search = params[:content]
-    posts = Post.all.where("content LIKE :query", query: "%#{search}%")
+    posts = Post.all.where("LOWER(content) LIKE LOWER(:query)", query: "%#{search}%").limit(20)
     posts = posts.map { |post|
       Api::V1::PostSerializer.new(post)
     }
