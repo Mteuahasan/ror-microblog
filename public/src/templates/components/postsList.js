@@ -15,6 +15,7 @@ export class PostsList {
   }
 
   bind() {
+    console.log(this.posts)
     this.allPosts = this.posts
   }
 }

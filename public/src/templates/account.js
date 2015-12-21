@@ -32,7 +32,6 @@ export class Account {
           this.http.fetch(`/users/${params.pseudo}`,)
             .then(response => {
               if (response.status === 200) {
-                console.log(response.status)
                 return response.json()
               }
             })

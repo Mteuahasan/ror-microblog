@@ -2,7 +2,9 @@ class Api::V1::PostsController < Api::V1::BaseController
   def index
     authenticate_request!
     offset = params[:offset] || 0
-    posts = Post.where(user: @current_user.following).order('created_at DESC').limit(20).offset(offset)
+    followings = @current_user.following + [@current_user]
+
+    posts = Post.where(user: followings).order('created_at DESC').limit(20).offset(offset)
     if posts.length > 0
       last_date = posts[-1].created_at
       first_date = posts[0].created_at
@@ -68,15 +70,6 @@ class Api::V1::PostsController < Api::V1::BaseController
       render :json => { :errors => @post.errors.messages }, :status => :bad_request
     end
   end
-
-  # def update
-  #   @user = User.update(params[:id], user_params)
-  #   if @user.save
-  #     render :nothing => true, :status => :created
-  #   else
-  #     render :json => { :errors => @user.errors.messages }, :status => :bad_request
-  #   end
-  # end
 
   def repost
     authenticate_request!

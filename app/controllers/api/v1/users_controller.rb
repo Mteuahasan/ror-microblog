@@ -9,7 +9,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     id = params[:id]
     offset = params[:offset] || 0
     user = User.find_by(id: id)
-    posts = Post.all.where(user_id: @current_user.id).order('created_at DESC').limit(20).offset(offset)
+    posts = Post.all.where(user_id: id).order('created_at DESC').limit(20).offset(offset)
     user.reposts.all.limit(20).order('created_at DESC').offset(offset).each { |post|
       puts post.user_id
       posts << post
