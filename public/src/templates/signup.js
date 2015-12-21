@@ -24,22 +24,11 @@ export class Signup {
   signup() {
     this.auth.signup(this.user)
     .then(function() {
-      login()
-    })
-    .catch(error => {
-      console.error(error)
-      this.signupError = error.response
-    })
-  }
 
-  login() {
-    console.log("LOGGING")
-    return this.auth.login(this.user.pseudo, this.user.password)
-    .then(response => {
-      console.log("Login response: " + response)
     })
     .catch(error => {
-      this.loginError = error.response
+      console.log(JSON.parse(error.response))
+      this.signupError = JSON.parse(error.response)
     })
   }
 }
