@@ -7,14 +7,14 @@ Rails.application.routes.draw do
       get "users/following/:id" => "users#following?", as: 'user_following'
       post 'users/authenticate' => 'users#authenticate'
       get "users/:pseudo" => "users#show", as: 'user_show'
-      get "users/:id/follow" => "users#follow", as: 'user_follow'
-      get "users/:id/unfollow" => "users#unfollow", as: 'user_unfollow'
+      post "users/:id/follow" => "users#follow", as: 'user_follow'
+      post "users/:id/unfollow" => "users#unfollow", as: 'user_unfollow'
       get "users/:id/likes" => "users#user_likes", as: 'user_liked_posts'
       get "users/:id/posts" => "users#user_posts", as: 'user_post'
       resources :users, only: [:index, :create, :update, :destroy]
 
-      get "posts/:id/like" => "posts#like", as: 'user_like_posts'
-      get "posts/:id/unlike" => "posts#unlike", as: 'user_unlike_posts'
+      post "posts/:id/like" => "posts#like", as: 'user_like_posts'
+      post "posts/:id/unlike" => "posts#unlike", as: 'user_unlike_posts'
       post "posts/:id/repost" => "posts#repost", as: 'posts_repost'
       post "posts/:id/unrepost" => "posts#unrepost", as: 'posts_unrepost'
       resources :posts, only: [:index, :create, :show, :update, :destroy]
