@@ -23,7 +23,7 @@ export class Login {
       console.log("Login response: " + response)
     })
     .catch(error => {
-      this.loginError = error.response
+      this.loginError = JSON.parse(error.response)
     })
   }
 }

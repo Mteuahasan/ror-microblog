@@ -1,0 +1,26 @@
+.bg {
+  position:absolute;
+  top:0;bottom:0;right:0;left:0;
+  background: url('/images/bg.png') 50%;
+  background-size: cover;
+  z-index: -1;
+}
+
+.sign-form{
+  background-color: $light-gray;
+  border-radius: 5px;
+  border: 1px solid $gray;
+  padding:15px;
+  button {
+    color: #fff;
+    background-color: $blue;
+    border-radius: 3px;
+    border: none;
+    margin-bottom:10px;
+  }
+  input {
+    border-radius: 3px;
+    border: none;
+    margin-bottom:10px;
+  }
+}

@@ -1,7 +1,8 @@
 .navbar-default .navbar-nav>li>a.logo{
-  max-width: 200px;
   background-color: transparent;
-  img {
-    width: 100%;
-  }
+}
+
+.navbar-brand{
+  background: url('/images/logo.png') center / contain no-repeat;
+  width: 200px;
 }
