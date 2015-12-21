@@ -28,7 +28,7 @@ export class Signup {
     })
     .catch(error => {
       console.log(JSON.parse(error.response))
-      this.signupError = JSON.parse(error.response)
+      this.signupError = error.response
     })
   }
 }
