@@ -3,7 +3,6 @@ import {inject, ObserverLocator} from 'aurelia-framework'
 import {HttpClient, json} from 'aurelia-fetch-client'
 import {AuthService} from 'aurelia-auth'
 
-
 import 'fetch'
 
 @inject(HttpClient, AuthService, ObserverLocator)

@@ -37,7 +37,10 @@ export default class {
         }, {
           route: 'account/:pseudo', name: 'account',
           moduleId: tmpl('account'), nav: false, title:'Account', auth: true
-        }
+        }, {
+          route: 'account/:pseudo/likes', name: 'likes',
+          moduleId: tmpl('likes'), nav: false, title:'Likes', authRoute: true
+        },
       ])
     }
 

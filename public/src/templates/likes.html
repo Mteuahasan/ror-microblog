@@ -13,12 +13,11 @@
       <p>${user.description}</p>
       <p><a href="mailto:${user.email}">${user.email}</a></p>
       <p><since-date date.bind="user.created_at"></since-date></p>
-      <p><a route-href="route: likes; params.bind: { pseudo: user.pseudo }">Likes</a></p>
+      <p><a route-href="route: account; params.bind: { pseudo: user.pseudo }">Back to account</a></p>
       <p if.bind="isMe">
         <a route-href="route: account-edit">Edit my account</a>
       </p>
       <p if.bind="!isMe">
-
         <follow-button user1.bind="me.id" user2.bind="user.id">Follow</follow-button>
       </p>
     </div>
