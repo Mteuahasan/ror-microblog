@@ -41,7 +41,10 @@
   header {
     padding: 20px 40px;
     background-color: $light-gray;
-    border-bottom: solid 1px $gray;
+    border-bottom: solid 1px $light-gray;
+    p {
+      font-size: 12px;
+    }
   }
 
   footer {
@@ -53,14 +56,20 @@
   h3 {
     color: $blue;
     margin-top: 0;
+    font-size: 18px;
+    margin: 0;
   }
 
   h3, h4 {
     font-weight: 300;
+    margin: 0;
   }
 
   .content {
     padding: 20px 40px;
+    p {
+      color: $dark-gray;
+    }
   }
 
   .mood {
