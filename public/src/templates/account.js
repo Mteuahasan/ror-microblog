@@ -36,10 +36,9 @@ export class Account {
               }
             })
             .then(data => {
-              if (data && data.user) {
-                this.user = data.user
-                this.getUserPosts()
-              }
+              console.log(data)
+              this.user = data.user
+              this.getUserPosts()
             })
         }
       })

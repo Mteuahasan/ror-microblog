@@ -33,13 +33,23 @@ export class FollowButton {
   }
 
   followUser() {
-    this.http.fetch(`/users/following/${this.user2}`, {
-      method: 'get',
+    this.http.fetch(`/users/${this.user2}/follow`, {
+      method: 'post',
       headers: {'Content-Type': 'application/json'}
     })
-    .then(response => response.json())
-    .then(data => {
-      this.isFollowing = data
+    .then(response => {
+      this.isFollowing = true
+    })
+
+  }
+
+  unfollowUser() {
+    this.http.fetch(`/users/${this.user2}/unfollow`, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      this.isFollowing = false
     })
   }
 }

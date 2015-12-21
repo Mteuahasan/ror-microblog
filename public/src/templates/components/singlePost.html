@@ -31,9 +31,13 @@
       <p>${postData.content}</p>
     </div>
     <footer>
-      <div if.bind="user.id === me.id">
-        <span class="glyphicon glyphicon-heart"></span>
-        <span class="glyphicon glyphicon-random"></span>
+      <div if.bind="user.id != me.id">
+        <button click.delegate="likePost(postData.id)">
+          ${postData.likes.length} <span class="glyphicon glyphicon-heart"></span>
+        </button>
+        <button click.delegate="repostPost(postData.id)">
+          ${postData.reposters.length} <span class="glyphicon glyphicon-random"></span>
+        </button>
       </div>
     </footer>
   </div>

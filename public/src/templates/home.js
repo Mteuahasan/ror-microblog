@@ -52,7 +52,6 @@ export class Home {
       .then(data => {
         if (data) {
           this.posts = data.map(post => post.post)
-          console.log(this.posts)
         }
       })
   }
@@ -81,6 +80,10 @@ export class Home {
       .then(response => {
         this.content = ''
         this.selectedMood = null
+        return response.json()
+      })
+      .then(data => {
+        this.posts.unshift(data.post)
       })
     }
   }

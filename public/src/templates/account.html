@@ -17,7 +17,8 @@
         <a route-href="route: account-edit">Edit my account</a>
       </p>
       <p if.bind="!isMe">
-        <follow-button user1.bind="this.me.id" user2.bind="this.user.id">Follow</follow-button>
+
+        <follow-button user1.bind="me.id" user2.bind="user.id">Follow</follow-button>
       </p>
     </div>
     <div class="col-md-9">
