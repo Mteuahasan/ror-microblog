@@ -9,7 +9,7 @@ export class Signup {
 
   user = {
     pseudo: '',
-    email: ``,
+    email: '',
     first_name: '',
     last_name: '',
     password: ''
@@ -22,12 +22,13 @@ export class Signup {
   }
 
   signup() {
-    return this.auth.signup(this.user)
-    .then(response => {
-      console.log("Signed Up!")
+    this.auth.signup(this.user)
+    .then(function() {
+
     })
     .catch(error => {
-      this.signupError = error.response
+      console.log(JSON.parse(error.response))
+      this.signupError = JSON.parse(error.response)
     })
   }
 }

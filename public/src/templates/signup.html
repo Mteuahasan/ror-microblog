@@ -1,28 +1,34 @@
 <template>
-  <form role="form" submit.delegate="signup()">
-    <div class="form-group">
-      <label for="pseudo">Pseudo</label>
-      <input type="text" value.bind="user.pseudo" class="form-control" id="pseudo" placeholder="Pseudo">
-    </div>
-    <div class="form-group">
-      <label for="first_name">Firstname</label>
-      <input type="text" value.bind="user.first_name" class="form-control" id="first_name" placeholder="Fistname">
-    </div>
-    <div class="form-group">
-      <label for="last_name">Lastname</label>
-      <input type="text" value.bind="user.last_name" class="form-control" id="last_name" placeholder="Lastname">
+  <div class="bg"></div>
+  <div class="sign-form col-md-8 col-md-offset-2">
+    <form role="form" submit.delegate="signup()">
+      <div class="form-group">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" value.bind="user.pseudo" class="form-control" id="pseudo" placeholder="Pseudo">
+      </div>
+      <div class="form-group">
+        <label for="first_name">Firstname</label>
+        <input type="text" value.bind="user.first_name" class="form-control" id="first_name" placeholder="Fistname">
+      </div>
+      <div class="form-group">
+        <label for="last_name">Lastname</label>
+        <input type="text" value.bind="user.last_name" class="form-control" id="last_name" placeholder="Lastname">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" value.bind="user.email" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" value.bind="user.password" class="form-control" id="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-default">Signup</button>
+    </form>
+    <hr if.bind="signupError">
+    <div class="alert alert-danger" if.bind="signupError">
+      ${signupError.errors}
     </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" value.bind="user.email" class="form-control" id="email" placeholder="Email">
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" value.bind="user.password" class="form-control" id="password" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-default">Signup</button>
-  </form>
-  <hr>
-  <div class="alert alert-danger" if.bind="signupError">${signupError}</div>
+  </div>
 </template>

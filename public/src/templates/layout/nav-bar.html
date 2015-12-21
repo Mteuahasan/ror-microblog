@@ -3,7 +3,15 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <li repeat.for="row of router.navigation | authFilter: isAuthenticated" class="${row.isActive ? 'active' : ''}">
-          <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href.bind="row.href" class="logo"><img src="/images/logo.png" alt="${row.title}"></a>
+
+          <a  if.bind="row.title != 'Moodler'"data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href.bind="row.href" class="logo">
+            <span >${row.title}</span>
+          </a>
+
+          <a  if.bind="row.title == 'Moodler'"data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href.bind="row.href" class="logo navbar-brand">
+
+          </a>
+
         </li>
       </ul>
 

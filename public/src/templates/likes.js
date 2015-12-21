@@ -35,6 +35,7 @@ export class Account {
             }
           })
           .then(data => {
+            console.log(data)
             this.user = data.user
             this.getUserPosts()
           })
@@ -43,7 +44,7 @@ export class Account {
   }
 
   getUserPosts() {
-    this.http.fetch(`/users/${this.user.id}/posts/`)
+    this.http.fetch(`/users/${this.user.id}/likes/`)
       .then(response => response.json())
       .then(data => {
         this.posts = data.map(post => post.post)

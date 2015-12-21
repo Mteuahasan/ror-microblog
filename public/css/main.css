@@ -7,6 +7,32 @@ html {
 .tar {
   text-align: right !important; }
 
+.bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: url("/images/bg.png") 50%;
+  background-size: cover;
+  z-index: -1; }
+
+.sign-form {
+  background-color: #fafafa;
+  border-radius: 5px;
+  border: 1px solid #ececec;
+  padding: 15px; }
+  .sign-form button {
+    color: #fff;
+    background-color: #4a90e2;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 10px; }
+  .sign-form input {
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 10px; }
+
 body {
   margin: 0;
   background-color: #fafafa !important; }
@@ -22,10 +48,11 @@ body {
   background-color: #fff; }
 
 .navbar-default .navbar-nav > li > a.logo {
-  max-width: 200px;
   background-color: transparent; }
-  .navbar-default .navbar-nav > li > a.logo img {
-    width: 100%; }
+
+.navbar-brand {
+  background: url("/images/logo.png") center/contain no-repeat;
+  width: 200px; }
 
 .aside {
   background-color: #FFF;
@@ -126,7 +153,8 @@ h2 {
     font-weight: 300;
     margin: 0; }
   .single-post .content {
-    padding: 20px 40px; }
+    padding: 20px 40px;
+    word-break: break-all; }
     .single-post .content p {
       color: #a1a1a1; }
   .single-post .mood h3 {

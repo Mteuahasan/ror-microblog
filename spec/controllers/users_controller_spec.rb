@@ -17,7 +17,7 @@ RSpec.describe Api::V1::UsersController, :type => :controller do
       create_user
       body = JSON.parse response.body
 
-      get :show, pseudo: body["pseudo"]
+      get :show, pseudo: "Mteuahasan"
       body = JSON.parse response.body
 
       expect(response).to have_http_status(:success)
