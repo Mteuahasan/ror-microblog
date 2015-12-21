@@ -13,8 +13,10 @@ Rails.application.routes.draw do
       get "users/:id/posts" => "users#user_posts", as: 'user_post'
       resources :users, only: [:index, :create, :update, :destroy]
 
-      post "posts/:id/like" => "posts#like", as: 'user_like_posts'
-      post "posts/:id/unlike" => "posts#unlike", as: 'user_unlike_posts'
+      get "posts/:id/liked" => "posts#liked", as: 'liked_post'
+      get "posts/:id/reposted" => "posts#reposted", as: 'reposted_post'
+      post "posts/:id/like" => "posts#like", as: 'like_posts'
+      post "posts/:id/unlike" => "posts#unlike", as: 'unlike_posts'
       post "posts/:id/repost" => "posts#repost", as: 'posts_repost'
       post "posts/:id/unrepost" => "posts#unrepost", as: 'posts_unrepost'
       resources :posts, only: [:index, :create, :show, :update, :destroy]

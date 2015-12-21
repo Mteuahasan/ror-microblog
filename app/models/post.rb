@@ -16,6 +16,11 @@ class Post < ActiveRecord::Base
     Post.find_by(id: post_id).likes.include?(user)
   end
 
+  def self.repost?(user_id, post_id)
+    user = User.find_by(id: user_id)
+    Post.find_by(id: post_id).reposters.include?(user)
+  end
+
   def like(user_id)
     like_relationships.create(user_id: user_id)
   end

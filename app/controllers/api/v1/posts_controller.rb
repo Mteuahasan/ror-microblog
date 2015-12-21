@@ -85,6 +85,18 @@ class Api::V1::PostsController < Api::V1::BaseController
     render nothing: true, :status => :ok
   end
 
+  def reposted
+    authenticate_request!
+    reposted = Post.repost?(@current_user.id, params[:id])
+    render json: reposted, :status => :ok
+  end
+
+  def liked
+    authenticate_request!
+    reposted = Post.like?(@current_user.id, params[:id])
+    render json: reposted, :status => :ok
+  end
+
   private
 
   def post_params
